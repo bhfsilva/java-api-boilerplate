@@ -1,0 +1,29 @@
+spring:
+  servlet:
+    multipart:
+      max-file-size: ${MAX_FILE_SIZE:10000MB}
+      max-request-size: ${MAX_REQUEST_SIZE:10000MB}
+  jpa:
+    show-sql: ${SHOW_SQL:true}
+  mail:
+    enabled: ${MAIL_ENABLED:false}
+    from: ${MAIL_FROM:example@gmail.com}
+    host: ${MAIL_HOST:smtp.gmail.com}
+    password: ${MAIL_PASSWORD:foobarPASSWD}
+    port: ${MAIL_PORT:465}
+    username: ${MAIL_USERNAME:boilerplate-bot}
+  datasource:
+    password: ${DB_PASSWORD:root}
+    username: ${DB_USERNAME:postgres}
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/boilerplate-db}
+  flyway:
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/boilerplate-db}
+    user: ${DB_USERNAME:postgres}
+    password: ${DB_PASSWORD:root}
+server:
+  port: ${PORT:8080}
+custom:
+  jwt:
+    secret: ${JWT_SECRET:boilerplate}
+    expiration: ${JWT_EXPIRATION:3000}
+    issuer: ${JWT_ISSUER:Boilerplate  API}

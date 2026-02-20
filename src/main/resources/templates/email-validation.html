@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <style>
+        * {
+            font-family: sans-serif;
+            margin: 0; padding: 0;
+        }
+        img {
+            width: 100px;
+            height: 35px;
+        }
+        table {
+            text-align: left;
+            margin: 0px auto;
+        }
+        th {
+            font-weight: bold;
+            font-size: 30px;
+        }
+        td {
+            display: inline-block;
+            margin: 14px 0px;
+            font-size: 18px;
+        }
+        a {
+            font-weight: bold;
+            background-color: #9b9b9b;
+            padding: 10px;
+            border-radius: 20px;
+            text-decoration: none
+        }
+        small {
+            color: gray;
+            font-size: 13px;
+        }
+    </style>
+</head>
+<body>
+<table>
+    <tr><td><img src="cid:logoImage" alt=""/></td></tr>
+    <tr><th>Validação de E-mail</th></tr>
+    <tr><td>Clique no botão para validar seu email.</td></tr>
+    <tr><td><a th:href="${link}" style="color: white">Validar email</a></td></tr>
+    <tr><td><small>Essa é uma mensagem automática e não precisa ser respondida.</small></td></tr>
+</table>
+</body>
+</html>

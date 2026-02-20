@@ -1,0 +1,67 @@
+services:
+
+  boilerplate-api:
+    image: boilerplate-api:${VERSION}
+    container_name: boilerplate-api
+    restart: unless-stopped
+    env_file:
+      - .env
+    build:
+      context: .
+    depends_on:
+      boilerplate-postgres:
+        condition: service_healthy
+      boilerplate-blob-storage:
+        condition: service_healthy
+    ports:
+      - 8080:8080
+    networks:
+      - app-network
+
+  boilerplate-postgres:
+    image: postgres:latest
+    container_name: boilerplate-postgres
+    restart: always
+    environment:
+      POSTGRES_DB: ${DB_NAME}
+      POSTGRES_USER: ${DB_USERNAME}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+    ports:
+      - 5432:5432
+    networks:
+      - app-network
+    volumes:
+      - boilerplate-postgres-data:/var/lib/postgresql/data
+    healthcheck:
+        test: [ "CMD-SHELL", "pg_isready -U ${DB_USERNAME} -d ${DB_NAME}" ]
+        interval: 5s
+        timeout: 5s
+        retries: 5
+        start_period: 5s
+
+  boilerplate-blob-storage:
+    image: mcr.microsoft.com/azure-storage/azurite
+    container_name: boilerplate-blob-storage
+    restart: always
+    environment:
+      AZURITE_ACCOUNTS: ${AZURITE_ACCOUNT_NAME:-storage}:${AZURITE_ACCOUNT_KEY:-none}
+    ports:
+      - 10000:10000
+    networks:
+      - app-network
+    volumes:
+      - boilerplate-blob-storage-data:/data
+    healthcheck:
+      test: ["CMD-SHELL", "if [ ! -d '/proc/1' ]; then exit 1; fi"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+      start_period: 5s
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  boilerplate-postgres-data:
+  boilerplate-blob-storage-data:
