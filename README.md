@@ -15,6 +15,7 @@ VERSION=0.0.0-LOCAL
 DB_NAME=boilerplate-db
 DB_USERNAME=<DB_USERNAME>
 DB_PASSWORD=<DB_PASSWORD>
+DB_URL=jdbc:postgresql://boilerplate-postgres/boilerplate-db
 ```
 
 >💡 Substitua os valores pelos específicos do projeto.
