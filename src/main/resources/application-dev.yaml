@@ -27,3 +27,7 @@ custom:
     secret: ${JWT_SECRET}
     expiration: ${JWT_EXPIRATION}
     issuer: ${JWT_ISSUER}
+  azure:
+    blob-storage:
+      connection-string: ${BLOB_STORAGE_CONNECTION_STRING}
+      container-name: ${BLOB_STORAGE_CONTAINER_NAME}

@@ -13,7 +13,9 @@ public enum ExceptionCode {
     INVALID_PASSWORD_RECOVERY_CODE,
     EMAIL_NOT_SENT,
     AUTHENTICATION_TOKEN_CREATION_ERROR,
-    INVALID_FILE_TYPE;
+    INVALID_FILE_TYPE,
+    FILE_NOT_FOUND,
+    FILE_PROCESSING_ERROR;
 
     public String getExceptionIndex() {
         var enumTotalEntries = values().length;

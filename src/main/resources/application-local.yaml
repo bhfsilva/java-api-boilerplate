@@ -27,3 +27,7 @@ custom:
     secret: ${JWT_SECRET:boilerplate}
     expiration: ${JWT_EXPIRATION:3000}
     issuer: ${JWT_ISSUER:Boilerplate  API}
+  azure:
+    blob-storage:
+      connection-string: ${BLOB_STORAGE_CONNECTION_STRING:DefaultEndpointsProtocol=http;AccountName=storage;AccountKey=none;BlobEndpoint=http://127.0.0.1:10000/storage;}
+      container-name: ${BLOB_STORAGE_CONTAINER_NAME:boilerplate}
